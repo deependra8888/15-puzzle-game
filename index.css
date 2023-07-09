@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Fasthand', cursive;
+  display: flex;
+  justify-content: center;
+  background-color: lightgoldenrodyellow;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li {
+  display: flex;
+  gap: 10px;
+}
+
+li button {
+  font-family: 'Fasthand', cursive;
+  width: 80px;
+  height: 80px;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  color: black;
+  font-size: larger;
+  background-color: lightblue;
+  color: mediumslateblue;
+  font-size: xx-large;
+}
+
+.pause, .restart {
+  font-family: 'Fasthand', cursive;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  color: black;
+  font-size: larger;
+  background-color: lightblue;
+  color: mediumslateblue;
+  font-size: x-large;
+  padding: 5px 10px;
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1em;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.btns-wrapper {
+  display: flex;
+  gap: 1em;
+}
+
+li button:hover{
+  transform: scale(1.2);
+  transition: all 0.4s ease;
+}
+
+
+.swap-animation {
+  transition: all 0.5s ease-in-out;
+}
+
+.matched {
+  background-color: black;
+}
+
+.blank {
+  background-color: mediumslateblue;
+}
