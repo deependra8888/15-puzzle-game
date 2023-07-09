@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
+import { useEffect, useRef, useState } from "react";
 
 function shuffle2DArray(array) {
   const rows = array.length;
@@ -22,18 +20,23 @@ function shuffle2DArray(array) {
   return array;
 }
 
+const correctPostion = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+  [13, 14, 15, 0],
+];
+
 const intialBoard = [
   [0, 1, 2, 3],
   [4, 5, 6, 7],
   [8, 9, 10, 11],
   [12, 13, 14, 15],
-]
-
+];
 
 export default function App() {
   const [board, setBoard] = useState(() => shuffle2DArray(intialBoard));
-  
-  
+  const [swapDir, setSwapDir] = useState();
   useEffect(() => {}, []);
 
   function swap(r, c) {
@@ -44,6 +47,13 @@ export default function App() {
       [0, -1],
       [0, 1],
     ];
+
+    let directions = {
+      "-10": "up",
+      10: "down",
+      "0-1": "left",
+      "01": "right",
+    };
     let newBoard = JSON.parse(JSON.stringify(board));
     for (let [x, y] of offsets) {
       if (
@@ -57,12 +67,14 @@ export default function App() {
         if (newBoard[cordX][cordY] === 0) {
           newBoard[cordX][cordY] = newBoard[r][c];
           newBoard[r][c] = 0;
-          break;
+          let key = x + "" + y;
+
+          setSwapDir(directions[key]);
+          setBoard(newBoard);
+          return;
         }
       }
     }
-
-    setBoard(newBoard);
   }
   return (
     <div className="App">
@@ -83,13 +95,23 @@ export default function App() {
         </div>
       </div>
       <ul className="grid-container">
-        {board.map((row, r) => {
+        {board.map((row, rowIndx) => {
           return (
-            <li key={uuidv4()}>
-              {row.map((col, c) => {
+            <li key={rowIndx}>
+              {row.map((num, colIndx) => {
                 return (
-                  <button className={!board[r][c] && 'blank'} onClick={() => swap(r, c)} key={uuidv4()}>
-                    {col !== 0 && col}
+                  <button
+                    className={
+                      num === 0
+                        ? "blank"
+                        : correctPostion[rowIndx][colIndx] === num
+                        ? "matched"
+                        : ""
+                    }
+                    onClick={() => swap(rowIndx, colIndx)}
+                    key={num}
+                  >
+                    {num !== 0 ? num : ""}
                   </button>
                 );
               })}

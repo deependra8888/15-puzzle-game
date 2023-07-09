@@ -1,20 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Pacifico', cursive;
 }
 
 body {
   min-height: 100vh;
-  font-family: 'Fasthand', cursive;
   display: flex;
   justify-content: center;
   background-color: lightgoldenrodyellow;
 }
 
+.title {
+  padding-top: 2rem;
+}
 .App {
   display: flex;
   flex-direction: column;
@@ -33,7 +34,6 @@ li {
 }
 
 li button {
-  font-family: 'Fasthand', cursive;
   width: 80px;
   height: 80px;
   border: none;
@@ -47,7 +47,6 @@ li button {
 }
 
 .pause, .restart {
-  font-family: 'Fasthand', cursive;
   border: none;
   outline: none;
   border-radius: 15px;
@@ -84,9 +83,10 @@ li button:hover{
 }
 
 .matched {
-  background-color: black;
+  background-color: lightgreen;
 }
 
 .blank {
   background-color: mediumslateblue;
 }
+
