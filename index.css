@@ -95,3 +95,7 @@ li button:hover{
   background-color: mediumslateblue;
 }
 
+button {
+  cursor: pointer;
+}
+
